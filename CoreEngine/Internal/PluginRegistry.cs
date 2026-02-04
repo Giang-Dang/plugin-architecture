@@ -10,8 +10,25 @@ namespace CoreEngine.Internal;
 public class PluginRegistry
 {
     // Key: Capability Name -> Value: Pre-sorted list of plugins (Priority DESC, Version DESC)
+    /// <summary>
+    /// Contains a read-only mapping of capability names to arrays of plugins, where each array is pre-sorted by
+    /// priority and version in descending order.
+    /// </summary>
+    /// <remarks>This dictionary enables efficient lookup of plugins that support a given capability, with
+    /// higher-priority and newer-version plugins appearing first in each array. The collection is immutable and cannot
+    /// be modified after initialization.</remarks>
     private readonly FrozenDictionary<string, IPlugin[]> _lookup;
 
+
+    /// <summary>
+    /// Initializes a new instance of the PluginRegistry class using the specified collection of plugins. Organizes
+    /// plugins by capability, prioritizing higher priority and newer versions for fast lookup.
+    /// </summary>
+    /// <remarks>Plugins are grouped by their capability, then sorted by descending priority and version. This
+    /// sorting occurs only during initialization, resulting in fast, O(1) lookups for subsequent queries. The
+    /// constructor does not modify the input collection.</remarks>
+    /// <param name="plugins">The collection of plugins to register. Each plugin must provide valid metadata for capability, priority, and
+    /// version. Cannot be null.</param>
     public PluginRegistry(IEnumerable<IPlugin> plugins)
     {
         // Sorting logic resides here (Startup time cost only)
@@ -40,6 +57,15 @@ public class PluginRegistry
     }
 
     // O(1) Lookup
+    /// <summary>
+    /// Retrieves a read-only sequence of plugins that support the specified capability.
+    /// </summary>
+    /// <remarks>If the specified capability does not exist, the returned memory region will be empty. The
+    /// returned sequence reflects the current set of plugins registered for the capability at the time of the
+    /// call.</remarks>
+    /// <param name="capability">The capability name to search for. This value is case-sensitive and cannot be null.</param>
+    /// <returns>A read-only memory region containing plugins that support the specified capability. Returns an empty region if
+    /// no plugins are found for the capability.</returns>
     public ReadOnlyMemory<IPlugin> GetOptimizationPlan(string capability)
     {
         if (_lookup.TryGetValue(capability, out var plugins))
