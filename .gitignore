@@ -1,0 +1,64 @@
+## [Visual Studio]
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (DotSettings)
+*.dotnetconf
+*.DotSettings.user
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Log]/
+[Tt]est[Rr]esult*/
+[Dd]eploy/
+
+# Visual Studio 2015/2017/2019/2022 cache directories
+.vs/
+
+## [NuGet]
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+# Custom NuGet folder
+packages/
+# NuGet restore artifacts
+project.lock.json
+project.assets.json
+
+## [.NET Core]
+# Publish output
+publish/
+# User Secrets
+secrets.json
+
+## [Visual Studio Code]
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## [JetBrains]
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+## [Operating Systems]
+# OSX
+.DS_Store
+# Windows
+Thumbs.db

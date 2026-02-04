@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/Plugins/" />
+  <Folder Name="/Plugins/CsvExport/">
+    <Project Path="Plugins/CsvExport/Plugins.CsvExport.csproj" />
+  </Folder>
+  <Folder Name="/Plugins/Notification/">
+    <Project Path="Plugins/Notification/Plugins.Notification.csproj" />
+  </Folder>
+  <Folder Name="/Plugins/PdfExport/">
+    <Project Path="Plugins/PdfExport/Plugins.PdfExport.csproj" />
+  </Folder>
+  <Project Path="CoreEngine.Tests/CoreEngine.Tests.csproj" />
+  <Project Path="CoreEngine/CoreEngine.csproj" />
+  <Project Path="PluginDemo/PluginDemo.csproj" />
+</Solution>
